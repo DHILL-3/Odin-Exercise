@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Function library example</title>
+  <style>
+  
+  </style>
+  </head>
+<body>
+  <input type="text" id="numberInput" placeholder="Enter Number Here">
+  <button onclick="addSeven()">Add 7</button>
+  <p id="result"></p>
+
+  <input type="text" id="slotone" placeholder="First Number">
+  <input type="text" id="slottwo" placeholder="Second Number">
+  <button onclick="multiply()">Multiply</button>
+  <p id="resultmultiply"></p>
+
+
+
+  <input type="text" id="inputString" placeholder="Enter a string">
+  <button onclick="capitalizeString()">Capitalize</button>
+  <p id="resultcapital"></p>
+
+
+  <input type="text" id="inputStringtwo" placeholder="Enter a string">
+  <button onclick="getLastLetter()">Get Last Letter</button>
+  <p id="resultlast"></p>
+  <script>
+    function addSeven() {
+      // Get the input value
+      var input = document.getElementById("numberInput").value;
+
+      // Parse the input value as a number
+      var number = parseFloat(input);
+
+      // Check if the input is a valid number
+      if (!isNaN(number)) {
+        // Add 7 to the number
+        var result = number + 7;
+
+        // Display the result
+        document.getElementById("result").innerHTML = "Result: " + result;
+      } else {
+        // Display an error message if the input is not a valid number
+        document.getElementById("result").innerHTML = "Invalid input. Please enter a number.";
+      }
+    }
+
+    function multiply() {
+    var slotone = document.getElementById("slotone").value;
+    var slottwo = document.getElementById("slottwo").value;
+    var resultmultiply = document.getElementById("resultmultiply");
+
+    var input1value = slotone;
+    var input2value = slottwo;
+
+    var number1 = parseFloat(input1value);
+    var number2 = parseFloat(input2value);
+
+    if (!isNaN(number1) && !isNaN(number2)) {
+      var product = number1 * number2;
+      resultmultiply.textContent = "Result: " + product;
+    } else {
+      resultmultiply.textContent = "Invalid Input. Use only numbers.";
+    }
+  }
+  function capitalizeString() {
+      var inputString = document.getElementById("inputString").value;
+      var resultcapital = document.getElementById("resultcapital");
+
+      var capitalizedString = capitalize(inputString);
+      resultcapital.textContent = "Result: " + capitalizedString;
+    }
+
+    function capitalize(string) {
+      if (typeof string !== 'string' || string.length === 0) {
+        // Return the input as is if it's not a non-empty string
+        return string;
+      }
+
+      var firstChar = string.charAt(0);
+      var restOfString = string.slice(1);
+
+      // Convert the first character to uppercase and concatenate it with the rest of the string
+      var capitalizedString = firstChar.toUpperCase() + restOfString.toLowerCase();
+
+      return capitalizedString;
+    }
+
+    function getLastLetter()  {
+      var inputStringtwo = document.getElementById("inputStringtwo").value;
+      var resultlast = document.getElementById("resultlast");
+
+      var lastLetter = getLastLetterOfString(inputStringtwo);
+      resultlast.textContent = "Last Letter: " + lastLetter;
+    }
+
+    function getLastLetterOfString(string) {
+      if (typeof string !== 'string' || string.length === 0) {
+        // Return an empty string if the input is not a non-empty string
+        return "";
+      }
+
+      var lastChar = string.charAt(string.length - 1);
+      return lastChar;
+    }
+  </script>
+</body>
+</html>
